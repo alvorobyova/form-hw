@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: "NunitoBlack";
+    src: url("../fonts/Nunitoblack.woff");
+}
+
+@font-face {
+    font-family: "NunitoBold";
+    src: url("../fonts/Nunitobold.woff");
+}
+
+body {
+    font-family: "NunitoBold", sans-serif;
+    font-size: 16px;
+    /*position: relative;*/
+}
+
+.layout {
+    background-image: linear-gradient(to right, #fff 50%,  #F8F8FA 50%);
+    /*display: none;*/
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
+}
+
+.logo {
+    padding: 27px 0 56px;
+    font-family: "NunitoBlack", sans-serif;
+    font-size: 36px;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.logo .red {
+    font-size: 48px;
+    color: #D72F3F;
+}
+
+.layout__content {
+    padding: 56px 46px 191px 63px;
+    display: flex;
+    align-items: center;
+    /*justify-content: space-between;*/
+}
+
+.content__left-side {
+    padding-right: 85px;
+}
+
+.content__header {
+    font-size: 36px;
+    line-height: 49px;
+}
+
+.content__description {
+    font-size: 22px;
+    line-height: 27px;
+    color: #636363;
+    height: 81px;
+    margin: 7px 0 42px;
+}
+
+.input {
+    margin-bottom: 20px;
+}
+
+.input__label {
+    font-size: 16px;
+    color: #C6C6C4;
+}
+
+.input__item {
+    display: block;
+    font-family: "NunitoBold", sans-serif;
+    font-size: 20px;
+    color: #323232;
+    border: 0;
+    outline: 0;
+    width: 452px;
+    border-bottom: 1px solid #C6C6C4;
+    padding-bottom: 5px;
+    margin-top: 5px;
+}
+
+.input.checkbox {
+    margin: 30px 0 40px;
+    width: 439px;
+    height: 25px;
+    font-size: 16px;
+    color: #636363;
+}
+
+.checkbox__item {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.checkbox__label {
+    vertical-align: middle;
+}
+
+.form__action {
+   text-align: center;
+}
+
+button {
+    width: 210px;
+    background: #DD3142;
+    border: 0;
+    border-radius: 40px;
+    text-align: center;
+    font-family: "NunitoBold", sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    color: #FFFFFF;
+    padding: 25px 68px;
+    margin-bottom: 44px;
+    cursor: pointer;
+}
+
+.form__question {
+    text-align: center;
+    font-size: 16px;
+    color: #636363;
+}
+
+.form__question a {
+    text-decoration: none;
+    color: #636363;
+}
+
+.form__question a:hover {
+    color: #3a3a3a;
+    text-decoration: underline;
+}
+
+
+.content__right-side {
+    margin-top: 60px;
+    justify-self: flex-start;
+    padding-left: 11px;
+}
+
+
+
+
+#popup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 200px);
+    width: 400px;
+    padding: 30px 40px;
+    text-align: center;
+    background-color: #DD3142;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    animation: showPopup 1s linear forwards;
+    z-index: 3;
+}
+
+.popup {
+    /*position: relative;*/
+    /*width: 100%;*/
+    /*height: 1000px;*/
+/*background-color: transparent;*/
+/*    opacity: 1;*/
+}
+
+#popup-ok-button {
+    width: 100px;
+    padding: 25px;
+    background: white;
+    color: #DD3142;
+    margin-bottom: 0;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+@keyframes showPopup {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/*MODAL WINDOW*/
+
+.container.container-second {
+    /*display: none;*/
+    /*position: relative;
+    width: 100%;
+    height: 100%;*/
+}
+
+.modal {
+    display: none;
+    width: 500px;
+    position: absolute;
+    overflow: hidden;
+    top: 50px;
+    left: calc(50% - 250px);
+    animation: showModal 1s linear forwards;
+    padding: 20px 15px;
+    border: 1px solid #DD3142;
+}
+
+.modal__content {
+    /*position: relative;*/
+    /*overflow: hidden;*/
+    padding: 0 20px;
+}
+
+.modal__content .content__header {
+    font-size: 30px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.modal__content .content__description {
+    font-size: 18px;
+    text-align: center;
+}
+
+.modal__content .form__action {
+    margin-top: 40px;
+}
+
+.modal__image img {
+    width: 250px;
+    opacity: 0.1;
+    position: absolute;
+    top: 70px;
+    left: -50px;
+}
+
+@keyframes showModal {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/*
+.xmark {
+    width: 20px;
+    fill: #DD3142;
+    opacity: 0.7;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}*/

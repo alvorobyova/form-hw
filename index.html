@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homeWorks | main </title>
+    <link rel="stylesheet" href="css/styles.css">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+</head>
+<body>
+
+<div class="layout">
+    <div class="container container-first">
+        <div class="logo">
+            <span>home<span class="red">W</span>orks</span>
+        </div>
+        <section class="layout__content">
+            <div class="content__left-side">
+                <h1 class="content__header">Get your free account</h1>
+                <p class="content__description">Try homeWorks BUSINESS free for 15 days. Downgrade to Basic (Free
+                    Forever) anytime.</p>
+                <form action="#" class="content__form" method="post">
+                    <div class="inputs">
+                        <div class="input">
+                            <label class="input__label"> Full Name
+                                <input class="input__item" type="text" id="full-name">
+                            </label>
+                        </div>
+                        <div class="input">
+                            <label class="input__label"> Your username
+                                <input class="input__item" type="text" id="user-name">
+                            </label>
+                        </div>
+                        <div class="input">
+                            <label class="input__label">E-mail
+                                <input class="input__item" type="email" id="email">
+                            </label>
+                        </div>
+                        <div class="input">
+                            <label class="input__label">Password
+                                <input class="input__item" type="password" id="password">
+                            </label>
+                        </div>
+                        <div class="input">
+                            <label class="input__label">Repeat Password
+                                <input class="input__item" type="password" id="repeat-password">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="input checkbox">
+                        <input class="checkbox__item" type="checkbox" name="agreement" id="agree">
+                        <label class="checkbox__label" for="agree">Agree to our Terms of Service and Privacy
+                            Statement</label>
+                    </div>
+                    <div class="form__action">
+                        <button id="button1" type="submit">Sign Up</button>
+                    </div>
+                    <p class="form__question"><a href="#">Already have an account?</a></p>
+                </form>
+
+            </div>
+            <div class="content__right-side">
+                <img src="img/image.png" alt="">
+            </div>
+        </section>
+    </div>
+    <div class="popup">
+        <div id="popup">
+            <p>A link has been sent to your email, please follow it to complete your registration.</p>
+            <button id="popup-ok-button">ОК</button>
+        </div>
+    </div>
+    <div class="container container-second">
+        <div class="modal">
+            <div class="logo">
+                <span>home<span class="red">W</span>orks</span>
+            </div>
+            <section class="modal__content">
+                <h1 class="content__header">Login to your system</h1>
+                <p class="content__description">Try homeWorks BUSINESS free for 15 days. Downgrade to Basic (Free
+                    Forever) anytime.</p>
+                <form action="#" class="content__form" method="post">
+                    <div class="inputs">
+                        <div class="input popup__input">
+                            <label class="input__label"> Your username
+                                <input class="input__item" type="text" id="user-name2">
+                            </label>
+                        </div>
+                        <div class="input modal__input">
+                            <label class="input__label">Password
+                                <input class="input__item" type="password" id="password2">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form__action">
+                        <button id="button2" type="submit">Sign In</button>
+                    </div>
+                </form>
+            </section>
+            <div class="modal__image">
+                <img src="img/image.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="scripts/script.js"></script>
+
+</body>
+</html>

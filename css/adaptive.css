@@ -159,6 +159,7 @@
 /* 320 -438*/
 @media screen and (max-width: 438px) {
     .content__right-side img {
+        display: none;
         overflow-x: hidden;
         top: 180px;
         right: -200px;

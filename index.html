@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>homeWorks | main </title>
     <link rel="stylesheet" href="css/styles.css">
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <link rel="stylesheet" href="css/adaptive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
@@ -18,31 +19,45 @@
                 <h1 class="content__header">Get your free account</h1>
                 <p class="content__description">Try homeWorks BUSINESS free for 15 days. Downgrade to Basic (Free
                     Forever) anytime.</p>
-                <form action="#" class="content__form" method="post">
+                <form action="#" class="content__form" method="post" id="signup-form" autocomplete="off">
                     <div class="inputs">
                         <div class="input">
-                            <label class="input__label"> Full Name
+                            <label class="input__label"> Full name
                                 <input class="input__item" type="text" id="full-name">
+                                <div class="signup__error empty">Write your full name</div>
+                                <div class="signup__error mistake">Full name can only contain letters and space</div>
                             </label>
                         </div>
                         <div class="input">
                             <label class="input__label"> Your username
                                 <input class="input__item" type="text" id="user-name">
+                                <div class="signup__error empty">Write your username</div>
+                                <div class="signup__error mistake">Use only letters, numbers, underscores and dashes</div>
                             </label>
                         </div>
                         <div class="input">
                             <label class="input__label">E-mail
-                                <input class="input__item" type="email" id="email">
+                                <input class="input__item" type="text" id="email">
+                                <div class="signup__error empty">Put e-mail</div>
+                                <div class="signup__error mistake">Wrong format. Please check characters you're trying
+                                    to put in
+                                </div>
                             </label>
                         </div>
                         <div class="input">
                             <label class="input__label">Password
                                 <input class="input__item" type="password" id="password">
+                                <div class="signup__error empty">Fill in password</div>
+                                <div class="signup__error mistake">Make sure, that password contains at least 8
+                                    characters: <br> - one uppercase letter<br> - one digit<br> - one special character
+                                </div>
                             </label>
                         </div>
                         <div class="input">
                             <label class="input__label">Repeat Password
                                 <input class="input__item" type="password" id="repeat-password">
+                                <div class="signup__error empty">Repeat password</div>
+                                <div class="signup__error mistake">Passwords mismatch</div>
                             </label>
                         </div>
                     </div>
@@ -51,11 +66,12 @@
                         <input class="checkbox__item" type="checkbox" name="agreement" id="agree">
                         <label class="checkbox__label" for="agree">Agree to our Terms of Service and Privacy
                             Statement</label>
+                        <div class="signup__error" id="checkbox-empty">Agreement is not accepted</div>
                     </div>
                     <div class="form__action">
-                        <button id="button1" type="submit">Sign Up</button>
+                        <button id="signup-button" type="submit">Sign Up</button>
                     </div>
-                    <p class="form__question"><a href="#">Already have an account?</a></p>
+                    <p class="form__link to-login"><a href="#">Already have an account?</a></p>
                 </form>
 
             </div>
@@ -71,34 +87,53 @@
         </div>
     </div>
     <div class="container container-second">
-        <div class="modal">
+        <div class="login">
             <div class="logo">
                 <span>home<span class="red">W</span>orks</span>
             </div>
-            <section class="modal__content">
+            <section class="login__content">
                 <h1 class="content__header">Login to your system</h1>
                 <p class="content__description">Try homeWorks BUSINESS free for 15 days. Downgrade to Basic (Free
                     Forever) anytime.</p>
-                <form action="#" class="content__form" method="post">
+                <form action="#" class="content__form" method="post" autocomplete="off" id="login-form">
                     <div class="inputs">
                         <div class="input popup__input">
                             <label class="input__label"> Your username
                                 <input class="input__item" type="text" id="user-name2">
+                                <div class="login__error username">Write your username</div>
                             </label>
                         </div>
-                        <div class="input modal__input">
+                        <div class="input login__input">
                             <label class="input__label">Password
                                 <input class="input__item" type="password" id="password2">
+                                <div class="login__error password">Fill in password</div>
                             </label>
                         </div>
                     </div>
 
                     <div class="form__action">
-                        <button id="button2" type="submit">Sign In</button>
+                        <button id="login-button" type="submit">Sign In</button>
                     </div>
+                    <p class="form__link to-registration"><a href="#">Registration</a></p>
                 </form>
             </section>
-            <div class="modal__image">
+            <div class="login__image">
+                <img src="img/image.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="container container-third">
+        <div class="user-account">
+            <div class="logo account">
+                <span>home<span class="red">W</span>orks</span>
+            </div>
+            <section class="account__content">
+                <h1 class="account__header">Welcome, <span id="fullnameSpan"></span></h1>
+                <div class="form__action">
+                    <button id="exit" type="submit">Exit</button>
+                </div>
+            </section>
+            <div class="account__image">
                 <img src="img/image.png" alt="">
             </div>
         </div>

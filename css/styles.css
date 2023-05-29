@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    transition: all 1s ease-in-out;
 }
 
 @font-face {
@@ -16,11 +17,10 @@
 body {
     font-family: "NunitoBold", sans-serif;
     font-size: 16px;
-    /*position: relative;*/
 }
 
 .layout {
-    background-image: linear-gradient(to right, #fff 50%,  #F8F8FA 50%);
+    background-image: linear-gradient(to right, #fff 50%, #F8F8FA 50%);
     /*display: none;*/
     position: relative;
 }
@@ -30,6 +30,9 @@ body {
     margin: 0 auto;
     z-index: 2;
     position: relative;
+}
+.container.container-first {
+    /*display: none;*/
 }
 
 .logo {
@@ -50,7 +53,6 @@ body {
     padding: 56px 46px 191px 63px;
     display: flex;
     align-items: center;
-    /*justify-content: space-between;*/
 }
 
 .content__left-side {
@@ -90,6 +92,7 @@ body {
     border-bottom: 1px solid #C6C6C4;
     padding-bottom: 5px;
     margin-top: 5px;
+    background: transparent;
 }
 
 .input.checkbox {
@@ -111,7 +114,7 @@ body {
 }
 
 .form__action {
-   text-align: center;
+    text-align: center;
 }
 
 button {
@@ -129,18 +132,18 @@ button {
     cursor: pointer;
 }
 
-.form__question {
+.form__link  {
     text-align: center;
     font-size: 16px;
     color: #636363;
 }
 
-.form__question a {
+.form__link a {
     text-decoration: none;
     color: #636363;
 }
 
-.form__question a:hover {
+.form__link a:hover {
     color: #3a3a3a;
     text-decoration: underline;
 }
@@ -152,11 +155,14 @@ button {
     padding-left: 11px;
 }
 
-
+.content__right-side img {
+    z-index: -1;
+}
 
 
 #popup {
     display: none;
+    /*display: block;*/
     position: absolute;
     top: 50%;
     left: calc(50% - 200px);
@@ -176,8 +182,8 @@ button {
     /*position: relative;*/
     /*width: 100%;*/
     /*height: 1000px;*/
-/*background-color: transparent;*/
-/*    opacity: 1;*/
+    /*background-color: transparent;*/
+    /*    opacity: 1;*/
 }
 
 #popup-ok-button {
@@ -199,7 +205,7 @@ button {
     }
 }
 
-/*MODAL WINDOW*/
+/*MODAL(LOGIN) WINDOW*/
 
 .container.container-second {
     /*display: none;*/
@@ -208,40 +214,41 @@ button {
     height: 100%;*/
 }
 
-.modal {
+.login {
     display: none;
+    /*display: block;*/
     width: 500px;
     position: absolute;
     overflow: hidden;
     top: 50px;
     left: calc(50% - 250px);
-    animation: showModal 1s linear forwards;
+    animation: showLoginWindow 1s linear forwards;
     padding: 20px 15px;
     border: 1px solid #DD3142;
 }
 
-.modal__content {
+.login__content {
     /*position: relative;*/
     /*overflow: hidden;*/
     padding: 0 20px;
 }
 
-.modal__content .content__header {
+.login__content .content__header {
     font-size: 30px;
     line-height: 40px;
     text-align: center;
 }
 
-.modal__content .content__description {
+.login__content .content__description {
     font-size: 18px;
     text-align: center;
 }
 
-.modal__content .form__action {
+.login__content .form__action {
     margin-top: 40px;
 }
 
-.modal__image img {
+.login__image img {
     width: 250px;
     opacity: 0.1;
     position: absolute;
@@ -249,7 +256,7 @@ button {
     left: -50px;
 }
 
-@keyframes showModal {
+@keyframes showLoginWindow {
     0% {
         opacity: 0;
     }
@@ -258,12 +265,50 @@ button {
     }
 }
 
-/*
-.xmark {
-    width: 20px;
-    fill: #DD3142;
-    opacity: 0.7;
+.signup__error, .login__error {
+    color: #DD3142;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none;
+}
+
+.signup__error.empty {
+    /*display: block;*/
+}
+
+.signup__error.mistake {
+    /*display: block;*/
+}
+
+/*ЛИЧНЫЙ КАБИНЕТ*/
+
+.container.container-third {
+    display: none;
+    /*display: block;*/
+    background: white;
+    background-size: contain;
+    padding: 0 90px;
+}
+.account__image {
+    position: relative;
+}
+.account__image img {
+    /*width: 250px;*/
+    opacity: 0.1;
     position: absolute;
-    top: 10px;
-    right: 10px;
-}*/
+    bottom: -280px;
+    right: -190px;
+
+}
+
+.account__header {
+    font-size: 30px;
+text-align: center;
+    margin-bottom: 60px;
+}
+
+.account__header span {
+    color: #DD3142;
+}
+
+

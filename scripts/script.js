@@ -1,99 +1,230 @@
-// ЗАДАНИЕ 1
-window.onload
-{
-    // ЗАДАНИЕ 2
-    let fullName = document.querySelector('#full-name');
-    fullName.onkeypress = function noDigits(event) {
-        // if ("1234567890".indexOf(event.key) !== -1)
-        if (!isNaN(parseInt(event.key))) {
-            event.preventDefault();
-        }
-    }
+window.onload = () => {
+    let pageContainer = document.querySelector('.container.container-first');
+    let popup = document.getElementById("popup");
 
-    // ЗАДАНИЕ 3
-    let userName = document.querySelector('#user-name');
-    userName.onkeypress = function noSymbols(event) {
-        if (".,".indexOf(event.key) !== -1)
-            event.preventDefault();
-    }
+    let buttonSignUp = document.getElementById('signup-button');
 
-    // ЗАДАНИЕ 4
-    let checkboxValue = document.getElementById('agree');
-    checkboxValue.addEventListener('change', function () {
-        if (this.checked) {
-            console.log('Agree');
-        } else {
-            console.log('Not agree');
-        }
+    function handleInputChange(event) {
+        const input= event.target;
+        input.value !== ''?
+            input.style.borderColor = 'palegreen':
+            input.style.borderColor = '#C6C6C4';
+    }
+    const formInputs = document.querySelectorAll('form input');
+    formInputs.forEach(input => {
+        input.addEventListener('input', handleInputChange);
     });
 
-    // ЗАДАНИЕ 5
-    let form = document.querySelector('form');
-    let pageContainer = document.querySelector('.container.container-first');
-    let validation = true;
-
-    form.addEventListener('submit', function (event) {
+    buttonSignUp.addEventListener('click', function (event) {
         event.preventDefault();
         event.stopPropagation();
-        if (event.target[0].value.length < 1) {
-            alert("Fill in field 'Full Name'");
-        } else if (event.target[1].value.length < 1) {
-            alert("Fill in field 'Your Username'");
-        } else if (event.target[2].value.length < 1) {
-            alert("Fill in field 'E-mail'");
-        } else if (event.target[3].value.length < 8) {
-            alert("Password must contain at least 8 characters");
-        } else if (event.target[4].value !== event.target[3].value) {
-            alert("Password mismatch");
-        } else if (!event.target[5].checked) {
-            alert("Select checkbox");
-        } else if (validation) {
-            popup.setAttribute("style", "display: block")
+        let formSignUp = document.getElementById('signup-form');
+        let inputs = formSignUp.querySelectorAll('input.input__item');
+        let formIsValid = true;
+
+        inputs.forEach(input => {
+            let value = input.value.trim();
+            let errorEmpty = input.parentElement.querySelector('.signup__error.empty');
+            let errorMistake = input.parentElement.querySelector('.signup__error.mistake');
+            let password = document.querySelector('#password');
+            let repeatPassword = document.querySelector('#repeat-password');
+
+            errorMistake.style.display = 'none';
+            input.style.borderColor = '#C6C6C4';
+
+            let fieldIsValid = true;
+            // Проверка наличие значения
+            if (!value) {
+                errorEmpty.style.display = 'block';
+                input.style.borderColor = '#DD3142';
+                fieldIsValid = false;
+            } else {
+                errorEmpty.style.display = 'none';
+                input.style.borderColor = '#C6C6C4';
+                fieldIsValid = false;
+
+                if (input.id === 'full-name' && !/^[a-zA-Z\s]+$/.test(value)) {
+                    errorMistake.style.display = 'block';
+                    input.style.borderColor = '#DD3142';
+                    fieldIsValid = false;
+                } else if (input.id === 'user-name' && !/^[a-zA-Z0-9_-]+$/.test(value)) {
+                    errorMistake.style.display = 'block';
+                    input.style.borderColor = '#DD3142';
+                    fieldIsValid = false;
+                } else if (input.id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                    errorMistake.style.display = 'block';
+                    input.style.borderColor = '#DD3142';
+                    fieldIsValid = false;
+                } else if (input.id === 'password' && !/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/.test(value)) {
+                    errorMistake.style.display = 'block';
+                    input.style.borderColor = '#DD3142';
+                    fieldIsValid = false;
+                } else if (input.id === 'repeat-password' && password.value !== repeatPassword.value) {
+                    errorMistake.style.display = 'block';
+                    input.style.borderColor = '#DD3142';
+                    fieldIsValid = false;
+                } else {
+                    fieldIsValid = true;
+                    errorMistake.style.display = 'none';
+                    input.style.borderColor = '#C6C6C4';
+                }
+            }
+
+            formIsValid = formIsValid && fieldIsValid;
+
+        });
+
+
+        let checkboxValue = document.getElementById('agree');
+        let checkboxEmpty = document.getElementById('checkbox-empty');
+        let checkboxIsValid = true;
+
+        if (checkboxValue.checked) {
+            checkboxEmpty.style.display = 'none';
+            checkboxIsValid = true;
+        } else {
+            checkboxEmpty.style.display = 'block';
+            checkboxIsValid = false;
+        }
+
+        formIsValid = formIsValid && checkboxIsValid;
+
+        if (formIsValid) {
+            popup.setAttribute("style", "display: block");
             popup.scrollIntoView({behavior: "smooth"});
             pageContainer.style.opacity = "0.2";
-            form.reset();
+
+            // Сохранение данные пользователя
+            let fullName = document.getElementById('full-name').value;
+            let userName = document.getElementById('user-name').value;
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+
+            // Создание объекта с данными о пользователе
+            let user = {
+                fullname: fullName,
+                username: userName,
+                password: password,
+                email: email,
+            };
+
+            // Текущий массив с клиентами из Local Storage
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Новый пользователь в массив с клиентами
+            users.push(user);
+
+            // Сохранение массива с клиентами в Local Storage
+            localStorage.setItem('users', JSON.stringify(users));
+
+            console.log(users);
+
+            // Очищаем форму после отправки
+            document.getElementById('signup-form').reset();
         }
     });
 
-    // условие для перехода на страницу логина, если пользователь нажал ОК
-    let popup = document.getElementById("popup");
-    let popupOkButton = document.getElementById("popup-ok-button");
 
-    let modalBlock = document.querySelector('.modal');
+    // условие для перехода на страницу логина, если пользователь нажал ОК
+    let popupOkButton = document.getElementById("popup-ok-button");
+    let loginPage = document.querySelector('.login');
 
     popupOkButton.addEventListener("click", (event) => {
         pageContainer.style.display = "none";
         popup.style.display = "none";
-        modalBlock.style.display = "block";
+        loginPage.style.display = "block";
     });
 
-// ЗАДАНИЕ 6
+    // переход на страницу входа по ссылке Already have an account?
+    let linkToLogin = document.querySelector('.form__link.to-login');
 
-    let modalForm = document.querySelector('.modal__content .content__form');
-    let modalValidation = true;
+    linkToLogin.onclick = function () {
+        pageContainer.style.display = "none";
+        loginPage.style.display = "block";
+    };
 
-    modalForm.addEventListener('submit', function (event) {
+    // СТРАНИЦА ВХОДА
+
+
+    // обновление страницы при клике на Registration
+    let linkToRegistration = document.querySelector('.form__link.to-registration');
+    linkToRegistration.onclick = function (event) {
         event.preventDefault();
-        event.stopPropagation();
-        if (event.target[0].value.length < 1) {
-            alert("Fill in field 'Your Username'");
-        } else if (event.target[1].value.length < 1) {
-            alert("Fill in field 'Password'");
-        } else if (event.target[1].value.length < 8) {
-            alert("Password must contain at least 8 characters. Please try again");
-        } else if (modalValidation) {
-            alert('Welcome, ' + event.target[0].value + '!');
-            modalForm.reset();
+
+        document.body.style.transition = 'opacity 0.5s ease-out'; // Плавное исчезновение страницы входа
+        document.body.style.opacity = 0;
+
+        setTimeout(function () {
+            location.reload();
+        }, 500);
+    };
+
+    // валидация
+
+    let buttonLogin = document.getElementById('login-button');
+
+    buttonLogin.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        let usernameError = document.querySelector('.login__error.username');
+        let passwordError = document.querySelector('.login__error.password');
+        let loginPassword = document.getElementById('password2');
+        let loginUsername = document.getElementById('user-name2');
+
+        usernameError.style.display = 'none';
+        passwordError.style.display = 'none';
+        loginUsername.style.borderColor = '#C6C6C4';
+        loginPassword.style.borderColor = '#C6C6C4';
+
+        let username = loginUsername.value.trim();
+        let password = loginPassword.value.trim();
+
+        let currentUsers = JSON.parse(localStorage.getItem('users')) || [];
+        let user = currentUsers.find(user => user.username === username);
+
+
+        if (!username) {
+            usernameError.style.display = 'block';
+            loginUsername.style.borderColor = '#DD3142';
+        }
+
+       if (!password) {
+            passwordError.style.display = 'block';
+            loginPassword.style.borderColor = '#DD3142';
+        }
+
+        else {
+            if (!user) {
+                loginUsername.style.borderColor = '#DD3142';
+                usernameError.style.display = 'block';
+                usernameError.innerText = 'Such user does not exist';
+            } else if (user.password !== password) {
+                loginPassword.style.borderColor = '#DD3142';
+                passwordError.style.display = 'block';
+                passwordError.innerText = 'Incorrect password';
+            } else {
+                usernameError.style.display = 'none';
+                passwordError.style.display = 'none';
+                loginPage.style.display = "none";
+                document.querySelector('.container.container-third').style.display = "block";
+                document.querySelector('.account__header span').textContent = user.fullname + '!';
+            }
         }
     });
 
-    // переход на страницу логина по ссылке Already have an account?
-    let link = document.querySelector('.form__question');
+    //обновление страницы при нажатии на кнопку exit
 
-    link.onclick = function () {
-        pageContainer.style.display = "none";
-        modalBlock.style.display = "block";
-    };
+    let exitButton = document.getElementById('exit');
+
+    exitButton.onclick = function (event) {
+        event.preventDefault();
+        document.body.style.transition = 'opacity 0.5s ease-out'; // Плавное исчезновение страницы входа
+        document.body.style.opacity = 0;
+
+        setTimeout(function () {
+            location.reload();
+        }, 500);
+    }
 
 }
 

@@ -156,15 +156,26 @@
 }
 
 
-/* 320 -438*/
+/* 320 - 438*/
 @media screen and (max-width: 438px) {
+    .container {
+        max-width: 438px;
+    }
+    .content__right-side {
+        display: none;
+    }
+
+    .layout{
+        background: url("../img/image-transparent.png") 100px 200px no-repeat;
+        background-size: contain;
+    }
+    /*
     .content__right-side img {
         display: none;
-        overflow-x: hidden;
         top: 180px;
         right: -200px;
         transform: scale(0.7);
-    }
+    }*/
 
     .content__header {
         font-size: 23px;
@@ -181,4 +192,11 @@
     }
 
 
+}
+
+@media screen and (max-width: 365px) {
+    .layout{
+        background: url("../img/image-transparent.png") 100px 300px no-repeat;
+        background-size: contain;
+    }
 }

@@ -159,9 +159,10 @@
 /* 320 -438*/
 @media screen and (max-width: 438px) {
     .content__right-side img {
-        top: 200px;
-        right: -210px;
-        transform: scale(0.9);
+        overflow-x: hidden;
+        top: 180px;
+        right: -200px;
+        transform: scale(0.7);
     }
 
     .content__header {
@@ -177,4 +178,6 @@
         width: 230px;
         /*font-size: 18px;*/
     }
+
+
 }

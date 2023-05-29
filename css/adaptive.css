@@ -172,4 +172,8 @@
     .content__description {
         font-size: 15px;
     }
+
+    button {
+        width: 200px;
+    }
 }

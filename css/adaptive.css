@@ -33,6 +33,11 @@
         transform: scale(0.8);
         opacity: 0.2;
     }
+
+    .login .logo {
+        text-align: center;
+        padding-left: 0;
+    }
 }
 
 
@@ -48,6 +53,19 @@
     }
 
 
+
+    .login__content .content__header {
+        /*font-size: 30px;*/
+        text-align: center;
+    }
+
+    .login__content .content__description {
+        text-align: center;
+        margin: 20px auto;
+        /*margin-top: 20px;*/
+    }
+
+
 }
 
 
@@ -58,6 +76,11 @@
         /*width: 850px;*/
         padding: 20px 0;
         max-width: 90%;
+    }
+
+    .layout{
+        background: url("../img/image-transparent.png") 100px 200px no-repeat;
+        background-size: contain;
     }
 
     .logo {
@@ -92,6 +115,10 @@
         text-align: center;
     }
 
+    .content__right-side {
+        display: none;
+    }
+
     .content__right-side img {
         top: 250px;
         right: -140px;
@@ -111,6 +138,7 @@
         max-width: 550px;
         padding: 20px 0;
     }
+
 
     .layout__content {
         padding: 20px 0;
@@ -134,13 +162,15 @@
     .input.checkbox {
         margin: 35px 0 75px;
     }
-
+    /*.content__right-side {
+        display: none;
+    }
 
     .content__right-side img {
         top: 250px;
         right: -190px;
         transform: scale(1.4);
-    }
+    }*/
 
     .logo {
         font-size: 28px;
@@ -152,6 +182,27 @@
     .logo .red {
         font-size: 38px;
         color: #D72F3F;
+    }
+
+    #popup {
+        left: calc(50% - 150px);
+        width: 300px;
+        padding: 30px;
+        font-size: 14px;
+    }
+
+    #popup-ok-button {
+        width: 80px;
+        padding: 15px 20px;
+        font-size: 13px;
+    }
+
+    .login__content .content__description {
+        margin-bottom: 40px;
+    }
+
+    .login__content .content__form {
+        width: 80%;
     }
 }
 
@@ -165,18 +216,6 @@
         display: none;
     }
 
-    .layout{
-        background: url("../img/image-transparent.png") 100px 200px no-repeat;
-        background-size: contain;
-    }
-    /*
-    .content__right-side img {
-        display: none;
-        top: 180px;
-        right: -200px;
-        transform: scale(0.7);
-    }*/
-
     .content__header {
         font-size: 23px;
         line-height: 1;
@@ -187,10 +226,21 @@
     }
 
     button {
-        width: 230px;
-        /*font-size: 18px;*/
+        max-width: 250px;
+        /*margin: 0 auto;*/
     }
 
+    .login__content .content__header {
+        font-size: 24px;
+    }
+
+    .login__content .content__description {
+        font-size: 13px;
+    }
+
+    .login__content .content__form {
+        width: 90%;
+    }
 
 }
 
@@ -198,5 +248,18 @@
     .layout{
         background: url("../img/image-transparent.png") 100px 300px no-repeat;
         background-size: contain;
+    }
+
+    #popup {
+        left: calc(50% - 140px);
+        width: 270px;
+        padding: 15px 10px;
+        font-size: 12px;
+    }
+
+    #popup-ok-button {
+        width: 80px;
+        padding: 15px 20px;
+        font-size: 12px;
     }
 }

@@ -178,14 +178,6 @@ button {
     z-index: 3;
 }
 
-.popup {
-    /*position: relative;*/
-    /*width: 100%;*/
-    /*height: 1000px;*/
-    /*background-color: transparent;*/
-    /*    opacity: 1;*/
-}
-
 #popup-ok-button {
     width: 100px;
     padding: 25px;
@@ -216,15 +208,19 @@ button {
 
 .login {
     display: none;
+    background: url("../img/image-transparent.png") -150px 100px no-repeat;
+    background-size: contain;
     /*display: block;*/
-    width: 500px;
+    width: 100%;
     position: absolute;
-    overflow: hidden;
-    top: 50px;
-    left: calc(50% - 250px);
+    overflow: auto;
+    top: 0;
+    /*left: calc(50% - 250px);*/
+    left: 0;
     animation: showLoginWindow 1s linear forwards;
     padding: 20px 15px;
-    border: 1px solid #DD3142;
+    height: 100vh;
+    /*border: 1px solid #DD3142;*/
 }
 
 .login__content {
@@ -244,11 +240,21 @@ button {
     text-align: center;
 }
 
+.login__content .content__form {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.login__content .content__form .input__item {
+    width: 100%;
+}
+
 .login__content .form__action {
     margin-top: 40px;
 }
 
 .login__image img {
+    display: none;
     width: 250px;
     opacity: 0.1;
     position: absolute;
@@ -285,9 +291,12 @@ button {
 .container.container-third {
     display: none;
     /*display: block;*/
-    background: white;
+    /*background: white;
+    background-size: contain;*/
+    background: url("../img/image-transparent.png") 100px 200px no-repeat;
     background-size: contain;
     padding: 0 90px;
+    height: 100vh;
 }
 .account__image {
     position: relative;
